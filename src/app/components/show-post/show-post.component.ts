@@ -15,14 +15,22 @@ export class ShowPostComponent implements OnInit {
     this.posts = this.data.getAllPost();
   }
 
-  openDialog(id:any): void {
-    const dialogEf=this.dialog.open(DeletePostComponent, {});
-    dialogEf.afterClosed().subscribe((res)=>{
-      if(res===true){
-          this.onDeletePost(id);
-      }
-    })
-    
+  openDialog(id:any,name:string): void {
+    const dialogEf=this.dialog.open(DeletePostComponent,{data:{option:name,id:id}});
+    if(name==='delete'){
+      dialogEf.afterClosed().subscribe((res)=>{
+        if(res===true){
+            this.onDeletePost(id);
+        }
+      })
+    }
+    else{
+      dialogEf.afterClosed().subscribe((res)=>{
+        if(res===true){
+          this.posts=this.data.getAllPost();
+        }
+      })
+    }
   }
 
   onDeletePost(id: any) {
