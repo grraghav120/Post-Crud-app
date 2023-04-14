@@ -13,7 +13,8 @@
           <p>{{post.content}}</p>
           <p>Author By: <b>{{post.name}}</b></p>
           <mat-action-row>
-            <button mat-raised-button color="warn" (click)="openDialog(post.id)">Delete</button>
+            <button mat-raised-button color="accent" (click)="openDialog(post.id,'edit')">Edit</button>
+            <button mat-raised-button color="warn" (click)="openDialog(post.id,'delete')">Delete</button>
         </mat-action-row>
         </mat-expansion-panel>
       </mat-accordion>
